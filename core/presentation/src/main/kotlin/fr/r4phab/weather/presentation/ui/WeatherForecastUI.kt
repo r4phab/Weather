@@ -1,17 +1,17 @@
 package fr.r4phab.weather.presentation.ui
 
-import androidx.compose.foundation.layout.Row
-import androidx.compose.foundation.layout.fillMaxWidth
-import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.lazy.LazyColumn
-import androidx.compose.foundation.lazy.items
+import androidx.compose.foundation.Image
+import androidx.compose.foundation.layout.*
 import androidx.compose.material.Card
+import androidx.compose.material.Divider
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.tooling.preview.Preview
+import androidx.compose.ui.unit.dp
 import fr.r4phab.weather.presentation.R
 import fr.r4phab.weather.presentation.design.Margins
 
@@ -28,7 +28,7 @@ data class WeatherForecastDayViewModel(
 
 @Preview
 @Composable
-private fun WeatherForecastUIPreview(){
+private fun WeatherForecastUIPreview() {
     WeatherForecastUI(
         modifier = Modifier.fillMaxWidth(),
         viewModel = WeatherForecastViewModel(
@@ -52,16 +52,27 @@ fun WeatherForecastUI(
     Card(
         modifier = modifier,
     ) {
-        LazyColumn(
-            modifier = Modifier.padding(Margins.medium)
+        Column(
+            modifier = Modifier
         ) {
-            items(viewModel.nextDays){
+            viewModel.nextDays.forEachIndexed { i, it ->
                 WeatherForecastDayUI(
                     modifier = Modifier
-                        .padding(Margins.small)
+                        .padding(horizontal = Margins.medium)
+                        .padding(
+                            top = when (i) {
+                                0 -> Margins.medium
+                                else -> Margins.small
+                            },
+                            bottom = Margins.medium
+                        )
                         .fillMaxWidth(),
                     viewModel = it
                 )
+
+                if (i < viewModel.nextDays.size - 1) {
+                    Divider()
+                }
             }
         }
     }
@@ -70,14 +81,24 @@ fun WeatherForecastUI(
 @Composable
 private fun WeatherForecastDayUI(
     modifier: Modifier = Modifier,
-    viewModel : WeatherForecastDayViewModel,
-){
+    viewModel: WeatherForecastDayViewModel,
+) {
     Row(
-        modifier = modifier
+        modifier = modifier,
+        verticalAlignment = Alignment.CenterVertically,
     ) {
+        Image(
+            modifier = Modifier.size(40.dp),
+            painter = painterResource(id = viewModel.icon),
+            contentDescription = "icon"
+        )
+
         Text(
+            modifier = Modifier
+                .weight(1f)
+                .padding(horizontal = Margins.medium),
             text = viewModel.name,
-            style = MaterialTheme.typography.h5.copy(color = Color.White)
+            style = MaterialTheme.typography.h6.copy(color = MaterialTheme.colors.onSurface)
         )
     }
 }
