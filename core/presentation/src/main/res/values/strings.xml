@@ -1,4 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="action_add_place">Add place</string>
+    <string name="error_unknown">An unexpected error has been encountered</string>
+    <string name="action_retry">Retry</string>
 </resources>

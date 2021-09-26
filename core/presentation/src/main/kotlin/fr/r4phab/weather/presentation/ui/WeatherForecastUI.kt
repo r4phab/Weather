@@ -116,7 +116,7 @@ private fun WeatherForecastDayUI(
                     withStyle(style = SpanStyle(color = Colors.secondaryLight)) {
                         append(viewModel.minimumTemperature)
                     }
-                    append(" - ")
+                    append(" • ")
                     withStyle(style = SpanStyle(fontWeight = FontWeight.Bold, color = Colors.secondaryDark)) {
                         append(viewModel.maximumTemperature)
                     }

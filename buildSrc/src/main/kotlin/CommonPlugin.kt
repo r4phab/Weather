@@ -2,6 +2,7 @@ import com.android.build.gradle.BaseExtension
 import org.gradle.api.JavaVersion
 import org.gradle.api.Plugin
 import org.gradle.api.Project
+import org.gradle.kotlin.dsl.dependencies
 
 class CommonPlugin : Plugin<Project> {
 
@@ -33,6 +34,10 @@ class CommonPlugin : Plugin<Project> {
             compileOptions.targetCompatibility = JavaVersion.VERSION_1_8
 
             testOptions.unitTests.isReturnDefaultValues = false
+        }
+
+        project.dependencies {
+            add("implementation", "com.soywiz.korlibs.klock:klock-jvm:${Versions.klock}")
         }
     }
 }

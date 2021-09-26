@@ -6,8 +6,6 @@ import retrofit2.http.Query
 
 interface OWAPI {
 
-    val apiKey get() = "2739ea1fda87a4ad1ac1929bba14d19a"
-
     @GET("onecall")
     suspend fun oneCall(
         @Query("lat") lat: Double,
