@@ -5,6 +5,7 @@
     <application>
         <activity
             android:name=".presentation.HomeActivity"
+            android:theme="@style/Activity"
             android:label="Activity #1">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
