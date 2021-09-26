@@ -10,6 +10,12 @@ gradlePlugin {
             implementationClass = "CommonPlugin"
         }
     }
+    plugins {
+        register("di") {
+            id = "di"
+            implementationClass = "DIPlugin"
+        }
+    }
 }
 
 repositories {

@@ -2,6 +2,7 @@ plugins {
     id("com.android.application")
     id("kotlin-android")
     id("common")
+    id("di")
 }
 
 android {
@@ -14,9 +15,6 @@ android {
 }
 
 dependencies {
-    api("org.jetbrains.kotlin:kotlin-stdlib:${Versions.kotlin}")
-
     implementation(project(":features:home"))
-
     testImplementation("junit:junit:4.13.1")
 }

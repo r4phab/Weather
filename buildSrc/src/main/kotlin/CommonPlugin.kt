@@ -33,12 +33,6 @@ class CommonPlugin : Plugin<Project> {
             compileOptions.targetCompatibility = JavaVersion.VERSION_1_8
 
             testOptions.unitTests.isReturnDefaultValues = false
-
-            composeOptions {
-                kotlinCompilerExtensionVersion = Versions.compose
-            }
-
-            buildFeatures.compose = true
         }
     }
 }

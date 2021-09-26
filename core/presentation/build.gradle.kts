@@ -2,6 +2,7 @@ plugins {
     id("com.android.library")
     id("kotlin-android")
     id("common")
+    id("di")
 }
 
 android {
@@ -19,7 +20,7 @@ dependencies {
     api("androidx.activity:activity-compose:1.3.1")
     api("androidx.compose.ui:ui-tooling:1.0.2")
     api("androidx.compose.material:material:${Versions.compose}")
-    api("com.google.accompanist:accompanist-insets:0.18.0")
+    api("com.google.accompanist:accompanist-insets:${Versions.accompanist}")
 
     testImplementation("junit:junit:4.13.1")
 }

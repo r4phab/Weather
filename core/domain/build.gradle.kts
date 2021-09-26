@@ -2,15 +2,11 @@ plugins {
     id("com.android.library")
     id("kotlin-android")
     id("common")
+    id("di")
 }
 
 android {
     kotlinOptions.jvmTarget = "1.8"
-    buildFeatures.compose = true
-
-    composeOptions {
-        kotlinCompilerExtensionVersion = Versions.compose
-    }
 }
 
 dependencies {
