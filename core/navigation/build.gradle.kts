@@ -10,7 +10,7 @@ android {
 }
 
 dependencies {
-    api("com.chargemap.android:router:${Versions.router}")
+    implementation(project(":core:testing"))
 
-    testImplementation("junit:junit:4.13.1")
+    api("com.chargemap.android:router:${Versions.router}")
 }

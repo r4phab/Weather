@@ -15,6 +15,8 @@ android {
 }
 
 dependencies {
+    implementation(project(":core:testing"))
+
     implementation(project(":core:domain"))
 
     api("com.google.android.material:material:1.4.0")
@@ -25,6 +27,4 @@ dependencies {
     api("io.coil-kt:coil-compose:1.3.2")
     api("androidx.compose.material:material:${Versions.compose}")
     api("com.google.accompanist:accompanist-insets:${Versions.accompanist}")
-
-    testImplementation("junit:junit:4.13.1")
 }

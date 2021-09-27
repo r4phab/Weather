@@ -13,7 +13,7 @@ import org.koin.java.KoinJavaComponent.get
 import kotlin.test.assertNotNull
 
 @TestInstance(TestInstance.Lifecycle.PER_CLASS)
-class CustomApplicationTests : BaseTest() {
+class OWOneCallResponseEntityTests : BaseTest() {
 
     @BeforeAll
     override fun beforeAll(){

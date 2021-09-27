@@ -13,5 +13,5 @@ dependencies {
     implementation(project(":core:testing"))
 
     implementation("com.squareup.retrofit2:retrofit:2.9.0")
-    implementation("com.squareup.retrofit2:converter-moshi:2.7.1")
+    api("com.squareup.retrofit2:converter-moshi:2.7.1")
 }

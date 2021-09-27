@@ -10,8 +10,8 @@ android {
 }
 
 dependencies {
+    implementation(project(":core:testing"))
+
     implementation(project(":core:data"))
     implementation(project(":core:domain"))
-
-    testImplementation("junit:junit:4.13.1")
 }
