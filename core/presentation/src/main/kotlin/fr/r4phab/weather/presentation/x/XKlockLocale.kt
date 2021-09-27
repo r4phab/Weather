@@ -5,7 +5,7 @@ import com.soywiz.klock.locale.*
 import java.util.*
 
 val klockLocale get() =
-    when(Locale.getDefault().country){
+    when(Locale.getDefault().language){
         "zh" -> KlockLocale.chinese
         "nl" -> KlockLocale.dutch
         "fr" -> KlockLocale.french

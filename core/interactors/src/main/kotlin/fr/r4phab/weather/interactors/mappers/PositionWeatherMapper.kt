@@ -21,6 +21,6 @@ fun OWInformationEntity.asModel() =
         day = DateTime.fromUnix(dt * 1000).dayOfWeek,
         weather = weather.first().asWeatherModel()!!,
         dayNight = weather.first().asDayNightModel(),
-        minimumTemperature = temp.min,
-        maximumTemperature = temp.max,
+        minimumTemperature = temp.min - 273.15,
+        maximumTemperature = temp.max- 273.15 ,
     )

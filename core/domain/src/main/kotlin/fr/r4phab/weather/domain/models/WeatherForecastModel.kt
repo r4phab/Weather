@@ -6,6 +6,6 @@ data class WeatherForecastModel(
     val day: DayOfWeek,
     val weather: WeatherModel,
     val dayNight: DayNightModel,
-    val minimumTemperature: Float,
-    val maximumTemperature: Float,
+    val minimumTemperature: Double,
+    val maximumTemperature: Double,
 )

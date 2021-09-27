@@ -63,6 +63,6 @@ fun WeatherForecastModel.asCurrentWeatherViewModel() =
                 DayNightModel.Day -> R.drawable.ic_icon_thunderstorm_day
             }
         },
-        minimumTemperature = "${(minimumTemperature - 273.15).roundToInt()}°C",
-        maximumTemperature = "${(maximumTemperature - 273.15).roundToInt()}°C",
+        minimumTemperature = "${minimumTemperature.roundToInt()}°C",
+        maximumTemperature = "${maximumTemperature.roundToInt()}°C",
     )

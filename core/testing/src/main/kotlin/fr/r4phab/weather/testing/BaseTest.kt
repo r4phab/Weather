@@ -5,7 +5,9 @@ import android.util.Log
 import io.mockk.every
 import io.mockk.mockk
 import io.mockk.mockkStatic
+import org.junit.jupiter.api.extension.ExtendWith
 
+@ExtendWith(CoroutinesExtension::class)
 open class BaseTest {
 
     val mockApplication by lazy { mockk<Application>() }
