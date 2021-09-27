@@ -43,7 +43,9 @@ object Colors {
         onSecondary = Color.White,
         onBackground = Color.DarkGray,
         onSurface = Color.DarkGray,
-        onError = Color.DarkGray
+        onError = Color.DarkGray,
+        background = Color.White,
+        surface = Color.LightGray,
     )
 
 }

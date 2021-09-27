@@ -4,4 +4,5 @@
     <string name="error_unknown">Une erreur a été rencontrée</string>
     <string name="action_retry">Réessayer</string>
     <string name="copyright">Développé par Raphaël Bertin</string>
+    <string name="credits">Crédits</string>
 </resources>

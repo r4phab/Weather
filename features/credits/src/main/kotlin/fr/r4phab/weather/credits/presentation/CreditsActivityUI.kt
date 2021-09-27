@@ -40,12 +40,12 @@ fun CreditsActivityUI(
                             IconButton(
                                 onClick = listener::onBack,
                             ) {
-                                Icon(Icons.Filled.ArrowBack, "Search")
+                                Icon(Icons.Filled.ArrowBack, "Back")
                             }
                         },
                         title = {
                             Text(
-                                text = "Credits",
+                                text = stringResource(id = R.string.credits),
                                 style = Texts.toolbar()
                             )
                         })
