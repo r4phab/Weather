@@ -13,6 +13,13 @@ class CommonPlugin : Plugin<Project> {
             compileSdkVersion(30)
             buildToolsVersion("30.0.2")
 
+            packagingOptions {
+                resources.excludes.add("META-INF/*")
+                resources.excludes.add("META-INF/licenses/*")
+                resources.excludes.add("win32-x86/*")
+                resources.excludes.add("win32-x86-64/*")
+            }
+
             defaultConfig {
                 versionCode = 1
                 versionName = "0.0.1"

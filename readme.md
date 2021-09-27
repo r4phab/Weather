@@ -7,7 +7,9 @@ Simple weather demonstration app using Jetpack Compose.
 
 ## Showcase
 
-<img src="art/showcase.gif" width="250"/>
+#### Light and dark themes
+<img src="art/light.gif" width="250"/>
+<img src="art/dark.gif" width="250"/>
 
 ## Contributors
 

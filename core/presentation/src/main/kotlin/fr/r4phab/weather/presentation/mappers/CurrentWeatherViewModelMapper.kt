@@ -5,6 +5,7 @@ import fr.r4phab.weather.domain.models.WeatherForecastModel
 import fr.r4phab.weather.domain.models.WeatherModel
 import fr.r4phab.weather.presentation.R
 import fr.r4phab.weather.presentation.ui.CurrentWeatherViewModel
+import fr.r4phab.weather.presentation.x.klockLocale
 import kotlin.math.roundToInt
 
 fun WeatherForecastModel.asCurrentWeatherViewModel() =
@@ -35,7 +36,7 @@ fun WeatherForecastModel.asCurrentWeatherViewModel() =
                 DayNightModel.Day -> "https://unsplash.com/photos/-bSucp2nUdQ/download?force=true&w=1920"
             }
         },
-        name = day.localName.replaceFirstChar { it.titlecase() },
+        name = day.localName(klockLocale).replaceFirstChar { it.titlecase() },
         icon = when (weather) {
             WeatherModel.Sun -> when (dayNight) {
                 DayNightModel.Night -> R.drawable.ic_icon_clear_sky_night
