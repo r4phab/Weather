@@ -6,7 +6,7 @@ import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.*
 import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.Add
+import androidx.compose.material.icons.filled.Place
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
@@ -24,13 +24,15 @@ import fr.r4phab.weather.presentation.design.Margins
 import fr.r4phab.weather.presentation.design.Texts
 import fr.r4phab.weather.presentation.design.ThemedScreen
 import fr.r4phab.weather.presentation.errors.errorString
-import fr.r4phab.weather.presentation.mappers.asViewModel
+import fr.r4phab.weather.presentation.mappers.asCurrentWeatherViewModel
+import fr.r4phab.weather.presentation.mappers.asWeatherForecastViewModel
+import fr.r4phab.weather.presentation.ui.CurrentWeatherUI
 import fr.r4phab.weather.presentation.ui.SectionTitleUI
 import fr.r4phab.weather.presentation.ui.WeatherForecastUI
 import fr.r4phab.weather.presentation.x.asRememberedState
 
 interface HomeActivityUIListener {
-    fun addPlaceClicked()
+    fun switchPlaceClicked()
     fun retryClicked()
 }
 
@@ -63,7 +65,7 @@ fun HomeActivityUI(
                     modifier = Modifier.navigationBarsPadding(),
                     text = {
                         Text(
-                            text = stringResource(id = R.string.action_add_place),
+                            text = stringResource(id = R.string.action_switch_place),
                             style = MaterialTheme.typography.button.copy(color = Color.White)
                         )
                     },
@@ -71,13 +73,13 @@ fun HomeActivityUI(
                         IconButton(modifier = Modifier.size(24.dp),
                             onClick = { }) {
                             Icon(
-                                Icons.Filled.Add,
-                                "Add",
+                                Icons.Filled.Place,
+                                "Switch",
                                 tint = Color.White
                             )
                         }
                     },
-                    onClick = listener::addPlaceClicked
+                    onClick = listener::switchPlaceClicked
                 )
             }
         ) {
@@ -99,7 +101,7 @@ private fun Content(
     Column(
         modifier = Modifier
             .fillMaxWidth()
-            .verticalScroll(state = rememberScrollState())
+            .verticalScroll(state = rememberScrollState()),
     ) {
         when (val it = weather) {
             is Resource.Nothing -> {
@@ -134,6 +136,18 @@ private fun Content(
 
             is Resource.Success -> {
                 SectionTitleUI(
+                    text = "Current Weather"
+                )
+
+                CurrentWeatherUI(
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .padding(horizontal = Margins.medium)
+                        .padding(bottom = Margins.medium),
+                    viewModel = it.value.current.asCurrentWeatherViewModel()
+                )
+
+                SectionTitleUI(
                     text = "Forecast"
                 )
 
@@ -142,8 +156,10 @@ private fun Content(
                         .fillMaxWidth()
                         .padding(horizontal = Margins.medium)
                         .padding(bottom = Margins.medium),
-                    viewModel = it.value.asViewModel()
+                    viewModel = it.value.asWeatherForecastViewModel()
                 )
+
+                Spacer(modifier = Modifier.height(98.dp))
             }
         }
     }

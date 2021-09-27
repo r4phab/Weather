@@ -21,9 +21,6 @@ class HomeActivity : AppCompatActivity(), HomeActivityUIListener {
         viewModel.loadWeather()
     }
 
-    override fun addPlaceClicked() {
-
-    }
-
+    override fun switchPlaceClicked() = viewModel.switchPlace()
     override fun retryClicked() = viewModel.loadWeather()
 }

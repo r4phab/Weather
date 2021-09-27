@@ -22,6 +22,7 @@ dependencies {
     api("androidx.activity:activity-compose:1.3.1")
     api("androidx.compose.ui:ui-tooling:1.0.2")
     api("androidx.lifecycle:lifecycle-runtime-ktx:2.4.0-alpha03")
+    api("io.coil-kt:coil-compose:1.3.2")
     api("androidx.compose.material:material:${Versions.compose}")
     api("com.google.accompanist:accompanist-insets:${Versions.accompanist}")
 

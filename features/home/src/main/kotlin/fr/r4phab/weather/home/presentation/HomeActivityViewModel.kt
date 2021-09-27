@@ -2,9 +2,8 @@ package fr.r4phab.weather.home.presentation
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import fr.r4phab.weather.domain.models.PlaceModel
-import fr.r4phab.weather.domain.models.PositionModel
 import fr.r4phab.weather.domain.models.PositionWeatherModel
+import fr.r4phab.weather.interactors.usecases.GetRandomCityUseCase
 import fr.r4phab.weather.interactors.usecases.GetWeatherForPositionUseCase
 import fr.r4phab.weather.presentation.Resource
 import kotlinx.coroutines.flow.MutableStateFlow
@@ -12,14 +11,10 @@ import kotlinx.coroutines.launch
 
 class HomeActivityViewModel(
     private val getWeatherForPositionUseCase: GetWeatherForPositionUseCase,
+    private val getRandomCityUseCase: GetRandomCityUseCase,
 ) : ViewModel() {
 
-    val place = MutableStateFlow(
-        PlaceModel(
-            "Vosges",
-            PositionModel(48.86673873744976, 2.342913274243554)
-        )
-    )
+    val place = MutableStateFlow(getRandomCityUseCase(null))
 
     val weatherResource = MutableStateFlow<Resource<PositionWeatherModel>>(Resource.Nothing())
 
@@ -36,5 +31,10 @@ class HomeActivityViewModel(
                 weatherResource.value = Resource.Error(e)
             }
         }
+    }
+
+    fun switchPlace() {
+        place.value = getRandomCityUseCase(place.value)
+        loadWeather()
     }
 }

@@ -27,7 +27,7 @@ fun SectionTitleUI(
     Text(
         modifier = modifier
             .padding(
-                top = Margins.larger,
+                top = Margins.larger + Margins.medium,
                 start = Margins.medium,
                 bottom = Margins.medium,
                 end = Margins.medium
