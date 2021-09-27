@@ -6,9 +6,11 @@ import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.*
 import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.Menu
 import androidx.compose.material.icons.filled.Place
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
+import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
@@ -26,14 +28,14 @@ import fr.r4phab.weather.presentation.design.ThemedScreen
 import fr.r4phab.weather.presentation.errors.errorString
 import fr.r4phab.weather.presentation.mappers.asCurrentWeatherViewModel
 import fr.r4phab.weather.presentation.mappers.asWeatherForecastViewModel
-import fr.r4phab.weather.presentation.ui.CurrentWeatherUI
-import fr.r4phab.weather.presentation.ui.SectionTitleUI
-import fr.r4phab.weather.presentation.ui.WeatherForecastUI
+import fr.r4phab.weather.presentation.ui.*
 import fr.r4phab.weather.presentation.x.asRememberedState
+import kotlinx.coroutines.launch
 
 interface HomeActivityUIListener {
     fun switchPlaceClicked()
     fun retryClicked()
+    fun openCreditScreen()
 }
 
 @Composable
@@ -42,15 +44,56 @@ fun HomeActivityUI(
     viewModel: HomeActivityViewModel,
 ) {
     val place by viewModel.place.asRememberedState()
+    val coroutineScope = rememberCoroutineScope()
+
+    val scaffoldState = rememberScaffoldState(rememberDrawerState(DrawerValue.Closed))
 
     ThemedScreen {
         Scaffold(
+            scaffoldState = scaffoldState,
+            drawerContent = {
+                NavigationDrawerUI(
+                    viewModel = NavigationDrawerViewModel(
+                        logo = R.drawable.ic_icon_broken_clouds_night,
+                        copyright = stringResource(id = R.string.copyright),
+                        items = listOf(
+                            NavigationDrawerItemViewModel(
+                                name = "Home",
+                                isSelected = true
+                            ),
+                            NavigationDrawerItemViewModel(
+                                name = "Crédits",
+                                isSelected = false
+                            )
+                        )
+                    ),
+                    onClick = {
+                        coroutineScope.launch {
+                            scaffoldState.drawerState.close()
+                        }
+
+                        when(it){
+                            0 -> {}
+                            1 -> listener.openCreditScreen()
+                        }
+                    }
+                )
+            },
             topBar = {
                 Column(
                     modifier = Modifier.background(MaterialTheme.colors.primarySurface)
                 ) {
                     Spacer(Modifier.statusBarsHeight())
                     TopAppBar(
+                        navigationIcon = {
+                            IconButton(onClick = {
+                                coroutineScope.launch {
+                                    scaffoldState.drawerState.open()
+                                }
+                            }) {
+                                Icon(Icons.Filled.Menu, "")
+                            }
+                        },
                         title = {
                             Text(
                                 text = place.name,

@@ -3,4 +3,5 @@
     <string name="action_switch_place">Switch place</string>
     <string name="error_unknown">An unexpected error has been encountered</string>
     <string name="action_retry">Retry</string>
+    <string name="copyright">Developed by Raphaël Bertin</string>
 </resources>

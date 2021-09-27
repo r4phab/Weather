@@ -3,6 +3,8 @@ package fr.r4phab.weather.home.presentation
 import android.os.Bundle
 import androidx.activity.compose.setContent
 import androidx.appcompat.app.AppCompatActivity
+import com.chargemap.android.router.Router
+import fr.r4phab.weather.navigation.Routes
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class HomeActivity : AppCompatActivity(), HomeActivityUIListener {
@@ -23,4 +25,9 @@ class HomeActivity : AppCompatActivity(), HomeActivityUIListener {
 
     override fun switchPlaceClicked() = viewModel.switchPlace()
     override fun retryClicked() = viewModel.loadWeather()
+    override fun openCreditScreen() {
+        Router
+            .of(this)
+            .push(Routes.Credits)
+    }
 }

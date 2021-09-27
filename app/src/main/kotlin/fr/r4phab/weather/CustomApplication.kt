@@ -21,5 +21,6 @@ class CustomApplication : Application() {
         fr.r4phab.weather.interactors.init()
         fr.r4phab.weather.presentation.init()
         fr.r4phab.weather.home.init()
+        fr.r4phab.weather.credits.init()
     }
 }

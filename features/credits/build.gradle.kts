@@ -1,5 +1,5 @@
 plugins {
-    id("com.android.application")
+    id("com.android.library")
     id("kotlin-android")
     id("common")
     id("di")
@@ -17,12 +17,9 @@ android {
 dependencies {
     implementation(project(":core:data"))
     implementation(project(":core:domain"))
+    implementation(project(":core:presentation"))
     implementation(project(":core:navigation"))
     implementation(project(":core:interactors"))
-    implementation(project(":core:presentation"))
-
-    implementation(project(":features:home"))
-    implementation(project(":features:credits"))
 
     testImplementation("junit:junit:4.13.1")
 }

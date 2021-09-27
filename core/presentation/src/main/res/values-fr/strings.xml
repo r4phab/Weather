@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="action_switch_place">Changer</string>
+    <string name="error_unknown">Une erreur a été rencontrée</string>
+    <string name="action_retry">Réessayer</string>
+    <string name="copyright">Développé par Raphaël Bertin</string>
+</resources>
