@@ -1,4 +1,4 @@
-# Jetpack Compose Number Picker
+# Weather
 
 Simple weather demonstration app using Jetpack Compose.
 
