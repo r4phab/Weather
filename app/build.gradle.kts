@@ -15,6 +15,8 @@ android {
 }
 
 dependencies {
+    implementation(project(":core:testing"))
+
     implementation(project(":core:data"))
     implementation(project(":core:domain"))
     implementation(project(":core:navigation"))
@@ -23,6 +25,4 @@ dependencies {
 
     implementation(project(":features:home"))
     implementation(project(":features:credits"))
-
-    testImplementation("junit:junit:4.13.1")
 }

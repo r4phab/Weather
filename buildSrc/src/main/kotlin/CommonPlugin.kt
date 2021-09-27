@@ -2,7 +2,9 @@ import com.android.build.gradle.BaseExtension
 import org.gradle.api.JavaVersion
 import org.gradle.api.Plugin
 import org.gradle.api.Project
+import org.gradle.api.tasks.testing.Test
 import org.gradle.kotlin.dsl.dependencies
+import org.gradle.kotlin.dsl.withType
 
 class CommonPlugin : Plugin<Project> {
 
@@ -28,6 +30,10 @@ class CommonPlugin : Plugin<Project> {
                 "main"
             ).forEach {
                 sourceSets.getByName(it).java.srcDirs("src/$it/kotlin")
+            }
+
+            project.tasks.withType<Test> {
+                useJUnitPlatform()
             }
 
             compileOptions.sourceCompatibility = JavaVersion.VERSION_1_8
